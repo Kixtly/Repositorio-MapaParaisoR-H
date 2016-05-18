@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+                                                                                
+"features": [
+{ "type": "Feature", "id": 1, "properties": { "NAME": "Restaurante Chely", "TEL": "933-33-54086", "URL": "http://www.restaurantchelyparaiso.com.mx/mapa.html", "ADDRESS1": "Carretera Paraiso-Chiltepec; El Bellote (Rumbo a Comalcalco)", "ADDRES2": null, "CITY": "Paraiso", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [-93.13462525606155,18.42517866604997] } }
+,
+{ "type": "Feature", "id": 2, "properties": { "NAME": "Wraps & Salads", "TEL": "933 890 6767", "URL":"https://www.facebook.com/pages/La-Organica-Wraps-Salads-House/274854082597872", "ADDRESS1": "Carretera Paraiso-El bellote antes de cruzar el puente del paso de El bellote.", "ADDRES2": null, "CITY": "Paraiso", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [-93.21976661682129,18.405270236272695] } },
+
+
+{ "type": "Feature", "id": 3, "properties": { "NAME": "Las Brisas del Caracol", "TEL": "933 134 2534", "URL": "https://www.facebook.com/Restaurant-Las-Brisas-Del-Caracol-500495349962863/", "ADDRESS1": "R/a Jose Ma. Morelos, El Bellote, Paraiso", "ADDRES2": null, "CITY": "Paraiso", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [-93.14350605010986,18.4237765243026] } }
+,
+{ "type": "Feature", "id": 4, "properties": { "NAME": "Restaurante Brint", "TEL": "933 333 5200 /933 333 31147", "URL": "https://www.facebook.com/brintMX/", "ADDRESS1": "Colonia Guanajay Carretera Federal Paraiso - Puerto Ceiba", "ADDRES2": null, "CITY": "Paraiso", "ZIP": 10011.0 }, "geometry": { "type": "Point","coordinates": [-93.20417761802673,18.40832930619529] } }
+,
+{ "type": "Feature", "id": 5, "properties": { "NAME": "Suchi Maz", "TEL": "933 333 3748", "URL": "https://www.facebook.com/SushiMazparaiso/info/?tab=overview", "ADDRESS1": "Carretera Paraiso al Puerto Dos Bocas, Plaza Dos Bocas", "ADDRES2": null, "CITY": "Paraiso", "ZIP": 10011.0 }, "geometry": {"type": "Point", "coordinates": [-93.21475088596344,18.408504908393123] } }]}

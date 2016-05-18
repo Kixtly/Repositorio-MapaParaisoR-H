@@ -1,0 +1,18 @@
+﻿{
+"type": "FeatureCollection",
+                                                                                
+"features": [{ "type": "Feature", "id": 1, "properties": { "NAME": "Hotel Las OLas", "TEL": "933-333-4889 / 933-333-4859", "URL": "http://hotellasolas.com.mx", "ADRESS1": "Ignacio Zaragoza No. 201, Col. Centro", "ADDRESS2": null, "CITY": "Paraiso,Tabasco", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [-93.21176022291183,18.396637359866364] } }
+,
+
+{ "type": "Feature", "id": 2, "properties": { "NAME": "Hotel Dos Ceibas", "TEL": "933-333- 3383 / 3384 / 3495", "URL": "http:\/\/www.hoteldosceibassuites.com.mx\/", "ADRESS1": " Manuel R. Domínguez; Colonia La Ceiba", "ADDRESS2": null, "CITY": "Paraiso,Tabasco", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [-93.20684105157851,18.39336174194254] } }
+
+
+,
+{ "type": "Feature", "id": 127, "properties": { "NAME": "Hotel Plaza Blanquita", "TEL": "933-33-3-4663", "URL": "http:\/\/www.hotelplazablanquita.com.mx\/", "ADRESS1": "Calle Santos Degollado N° 1259", "ADDRESS2": null, "CITY": "Paraiso,Tabasco", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [ -93.208347, 18.404614  ] } }
+,
+{ "type": "Feature", "id": 0, "properties": { "NAME": "Hotel Don Celes", "TEL": "933-333-2373", "URL": "http:\/\/www.hoteldoncelesparaiso.com.mx\/", "ADRESS1": "Gregorio Méndez Col. Centro. C.P. 86600", "ADDRESS2": null, "CITY": "Paraiso,Tabasco", "ZIP": 10004.0 }, "geometry": { "type": "Point", "coordinates": [ -93.213508, 18.39889  ] } },
+{ "type": "Feature", "id": 5, "properties": { "NAME": "Hotel City Express Paraiso", "TEL": "933-333-5471", "URL": "https://www.cityexpress.com/es/hoteles-Mexico/MX/Tabasco-7/Paraiso-10/City-Express-Paraiso-86/", "ADRESS1": "Carretera Federal Paraiso El Bellote s/n,Col. La Ceiba,86607", "ADDRESS2": null, "CITY": "Paraiso,Tabasco", "ZIP": 10011.0 }, "geometry": { "type": "Point", "coordinates": [ -93.18861812353134,18.41316975336507 ] } }
+
+
+]
+}
