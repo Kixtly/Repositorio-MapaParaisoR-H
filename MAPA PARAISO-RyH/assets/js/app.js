@@ -75,7 +75,7 @@ function sidebarClick(id) {
   var layer = markerClusters.getLayer(id);
   map.setView([layer.getLatLng().lat, layer.getLatLng().lng], 17);
   layer.fire("click");
-  /* Hide sidebar and go to the map on small screens */
+  /* Esta parte del codigo sirve para ocultar barra lateral e ir al mapa */
   if (document.body.clientWidth <= 767) {
     $("#sidebar").hide();
     map.invalidateSize();
@@ -83,9 +83,9 @@ function sidebarClick(id) {
 }
 
 function syncSidebar() {
-  /* Empty sidebar features */
+  /* Aqui muestra las características de la barra lateral, que estan vacias */
   $("#feature-list tbody").empty();
-  /* Loop through restaurantes layer and add only features which are in the map bounds */
+  /* Este "Bucle" se muestr a través de la capa de restaurantes y aqui se añaden las características que se encuentran en los límites del mapa */
   restaurantes.eachLayer(function (layer) {
     if (map.hasLayer(restauranteLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
@@ -93,7 +93,7 @@ function syncSidebar() {
       }
     }
   });
-  /* Loop through hoteles layer and add only features which are in the map bounds */
+  /* Esta es la misma función que la anterior, solo que este es de los hoteles */
   hoteles.eachLayer(function (layer) {
     if (map.hasLayer(hotelLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
@@ -101,7 +101,7 @@ function syncSidebar() {
       }
     }
   });
-  /* Update list.js featureList */
+  /* Aqui se actualiza la lista o el "featureList" */
   featureList = new List("features", {
     valueNames: ["feature-name"]
   });
@@ -110,7 +110,7 @@ function syncSidebar() {
   });
 }
 
-/* Basemap Layers */
+/* Aqui se muestran las capas del mapa, esta herramienta controla la visualización correcta del mapa */
 var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
   maxZoom: 19,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
@@ -130,7 +130,7 @@ var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/s
   attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
 })]);
 
-/* Overlay Layers */
+/* Aqui se muestran las caracteristicas del mapa como los colores, líneas, grosor, etc. */
 var highlight = L.geoJson(null);
 var highlightStyle = {
   stroke: false,
@@ -275,7 +275,7 @@ $.getJSON("data/subways.geojson", function (data) {
   subwayLines.addData(data);
 });
 
-/* Single marker cluster layer to hold all clusters */
+/* Esta funcion sirve para que las listas se muestren agrupadas */
 var markerClusters = new L.MarkerClusterGroup({
   spiderfyOnMaxZoom: true,
   showCoverageOnHover: false,
@@ -283,7 +283,8 @@ var markerClusters = new L.MarkerClusterGroup({
   disableClusteringAtZoom: 16
 });
 
-/* Empty layer placeholder to add to layer control for listening when to add/remove restaurantes to markerClusters layer */
+/* marca la de posición de la capa vacía para agregar a la capa de control para saber cuándo agregar y quitar 
+restaurantes de capa markerClusters. Es importante este codigo para que visualice los maracodores del mapa*/
 var restauranteLayer = L.geoJson(null);
 var restaurantes = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
@@ -326,7 +327,7 @@ $.getJSON("data/DOITT_RESTAURANT_01_13SEPT2010.geojson", function (data) {
   map.addLayer(restauranteLayer);
 });
 
-/* Empty layer placeholder to add to layer control for listening when to add/remove hoteles to markerClusters layer */
+/* Tiene la misma función que la anterior, ahora esta es para los marcadores de los hoteles en el mapa */
 var hotelLayer = L.geoJson(null);
 var hoteles = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
@@ -367,7 +368,7 @@ var hoteles = L.geoJson(null, {
 $.getJSON("data/DOITT_HOTEL_01_13SEPT2010.geojson", function (data) {
   hoteles.addData(data);
 });
-
+/* IMPOTANTE: Si se va a hacer algun cambio en el nombre del archivo geojson, debes relizarlo también en esta parte*/
 map = L.map("map", {
   zoom: 13,
   center: 
@@ -385,7 +386,7 @@ layers: [mapquestOSM, boroughs, markerClusters, highlight],
   attributionControl: false
 });
 
-/* Layer control listeners that allow for a single markerClusters layer */
+/* controla las capas que permiten usar una sola capa de los markerClusters */
 map.on("overlayadd", function(e) {
   if (e.layer === restauranteLayer) {
     markerClusters.addLayer(restaurantes);
@@ -408,17 +409,17 @@ markerClusters.removeLayer(restaurantes);
   }
 });
 
-/* Filter sidebar feature list to only show features in current map bounds */
+/* Filtra la lista de características que estan en la barra lateral para mostrar sólo los elementos límites actuales en el mapa  */
 map.on("moveend", function (e) {
   syncSidebar();
 });
 
-/* Clear feature highlight when map is clicked */
+/* Permite mostrar las características con la función de clic */
 map.on("click", function(e) {
   highlight.clearLayers();
 });
 
-/* Attribution control */
+/* Control de Atribución del mapa */
 function updateAttribution(e) {
   $.each(map._layers, function(index, layer) {
     if (layer.getAttribution) {
@@ -443,7 +444,8 @@ var zoomControl = L.control.zoom({
   position: "bottomright"
 }).addTo(map);
 
-/* GPS enabled geolocation control set to follow the user's location */
+/* Esta funcion controla el GPS de geolocalización para que pueda detectar la ubicacion de un usuario.
+Aqui tambien se debe especificar el aumento o zoom que tendrá el mapa en su vista previa*/
 var locateControl = L.control.locate({
   position: "bottomright",
   drawCircle: true,
@@ -475,7 +477,8 @@ var locateControl = L.control.locate({
   }
 }).addTo(map);
 
-/* Larger screens get expanded layer control and visible sidebar */
+/* Las pantallas más grandes consiguen control de estacapa y la barra lateral visible se expande, en pocas palabras
+se muestra la lista dependiendo de la visulización*/
 if (document.body.clientWidth <= 767) {
   var isCollapsed = true;
 } else {
@@ -498,12 +501,13 @@ var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
   collapsed: isCollapsed
 }).addTo(map);
 
-/* Highlight search box text on click */
+/* Esta contiene la funcion dle cuadro de búsqueda. Pero esta no es necesaria, sólo lo sería en caso de 
+mostrar mas caracteriasticas en el mapa, por ejemplo, más de 20 elementos...*/
 $("#searchbox").click(function () {
   $(this).select();
 });
 
-/* Prevent hitting enter from refreshing the page */
+/*Previene el oprimir la tecla Enter de actualizar la página */
 $("#searchbox").keypress(function (e) {
   if (e.which == 13) {
     e.preventDefault();
@@ -514,11 +518,11 @@ $("#featureModal").on("hidden.bs.modal", function (e) {
   $(document).on("mouseout", ".feature-row", clearHighlight);
 });
 
-/* Typeahead search functionality */
+/* Esta hace la función de búsqueda */
 $(document).one("ajaxStop", function () {
   $("#loading").hide();
   sizeLayerControl();
-  /* Fit map to boroughs bounds */
+  /* ajusta los límites de los distritos en el mapa */
   map.fitBounds(boroughs.getBounds());
   featureList = new List("features", {valueNames: ["feature-name"]});
   featureList.sort("feature-name", {order:"asc"});
@@ -588,7 +592,8 @@ $(document).one("ajaxStop", function () {
   hotelesBH.initialize();
   geonamesBH.initialize();
 
-  /* instantiate the typeahead UI */
+  /* Crea una instancia de la interfaz de usuario de typeahead. Aqui se va a especificar los nombres
+  de los contenedores de las listas. Tambien se especifican los tamaños en que se desean visualizar los maracdores en el mapa*/
   $("#searchbox").typeahead({
     minLength: 3,
     highlight: true,
@@ -655,7 +660,7 @@ $(document).one("ajaxStop", function () {
   $(".twitter-typeahead").css("display", "block");
 });
 
-// Leaflet patch to make layer control scrollable on touch browsers
+// Esta funcion es un parche para poder controlar y desplazarse sobre el touch en otros navegadores.//
 var container = $(".leaflet-control-layers")[0];
 if (!L.Browser.touch) {
   L.DomEvent
